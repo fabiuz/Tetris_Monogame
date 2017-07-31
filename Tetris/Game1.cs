@@ -25,7 +25,6 @@ namespace Tetris
 			this.graphics.PreferredBackBufferWidth = 600;
 			this.graphics.PreferredBackBufferHeight = 600;
 			this.IsMouseVisible = true;
-
 		}
 
 		/// <summary>
