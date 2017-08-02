@@ -128,6 +128,14 @@ namespace Tetris
 					pecaTempo.intervaloDeslocarVerticalManual = 50;
 					pecaTempo.intervaloPodeDescer = 500;
 					pecaTempo.podeDescer = true;
+
+					pecaTempo.intervaloDeslocarPraEsquerda = 100;
+					pecaTempo.intervaloDeslocarPraDireita = 100;
+					pecaTempo.podeDeslocarPraEsquerda = false;
+					pecaTempo.podeDeslocarPraDireita = false;
+
+
+					pecaTempo.jogoEstaPausado = false;
 					break;
 			}
 		}
@@ -148,17 +156,6 @@ namespace Tetris
 
 			var tempoDecorrido = gameTime.TotalGameTime.TotalMilliseconds;
 
-			if (tempoDecorrido - pecaTempo.tempoDecorridoHorizontal > pecaTempo.intervaloDeslocarHorizontal)
-			{
-				pecaTempo.podeDeslocarHorizontal = true;
-				pecaTempo.tempoDecorridoHorizontal = tempoDecorrido;
-			}
-
-			if (tempoDecorrido - pecaTempo.tempoDecorridoVertical > pecaTempo.intervaloDeslocarVertical)
-			{
-				pecaTempo.podeDeslocarVertical = true;
-				pecaTempo.tempoDecorridoVertical = tempoDecorrido;
-			}
 
 			if (tempoDecorrido - pecaTempo.tempoDecorridoGirar > pecaTempo.intervaloGirar)
 			{
@@ -168,43 +165,50 @@ namespace Tetris
 			if (tempoDecorrido - pecaTempo.tempoDecorridoPodeDescer > pecaTempo.intervaloPodeDescer)
 			{
 				pecaTempo.tempoDecorridoPodeDescer = gameTime.TotalGameTime.TotalMilliseconds;
+				pecaTempo.podeDeslocarVertical = true;
 			}
 
 		}
 
 		public void VerificarTeclas(GameTime gameTime)
 		{
-			VerificarTempo(gameTime);
+			var tempoDecorrido = gameTime.TotalGameTime.TotalMilliseconds;
+
+			 VerificarTempo(gameTime);
+
+			if ( Keyboard.GetState().IsKeyDown(Keys.Pause) )
+			{
+				pecaTempo.jogoEstaPausado = !pecaTempo.jogoEstaPausado;
+			}
+
+			if ( pecaTempo.jogoEstaPausado )
+			{
+				return;
+			}
+
 
 			if (Keyboard.GetState().IsKeyDown(Keys.Left))
 			{
-				// Só move a tecla a cada 1 segundo.
-				if (pecaTempo.podeDeslocarHorizontal == true)
+				if ( tempoDecorrido - pecaTempo.tempoDecorridoEsquerda > pecaTempo.intervaloDeslocarPraEsquerda )
 				{
 					tetrisPeca.MoverPraEsquerda();
-					pecaTempo.podeDeslocarHorizontal = false;
-
-					pecaTempo.tempoDecorridoHorizontal = gameTime.TotalGameTime.TotalMilliseconds;
+					pecaTempo.tempoDecorridoEsquerda = tempoDecorrido;
 				}
 			}
+
 			if (Keyboard.GetState().IsKeyDown(Keys.Right))
 			{
-				if (pecaTempo.podeDeslocarHorizontal == true)
+				if ( tempoDecorrido - pecaTempo.tempoDecorridoDireita > pecaTempo.intervaloDeslocarPraDireita )
 				{
 					tetrisPeca.MoverPraDireita();
-					pecaTempo.podeDeslocarHorizontal = false;
-
-					pecaTempo.tempoDecorridoHorizontal = gameTime.TotalGameTime.TotalMilliseconds;
+					pecaTempo.tempoDecorridoDireita = tempoDecorrido;
 				}
+
 			}
 			if (Keyboard.GetState().IsKeyDown(Keys.Down))
 			{
 				if (gameTime.TotalGameTime.TotalMilliseconds - pecaTempo.tempoDecorridoVerticalManual > pecaTempo.intervaloDeslocarVerticalManual)
 				{
-					if (pecaTempo.podeDescer == false)
-					{
-						return;
-					}
 					tetrisPeca.MoverPraBaixo();
 					pecaTempo.tempoDecorridoVerticalManual = gameTime.TotalGameTime.TotalMilliseconds;
 				}
@@ -220,23 +224,8 @@ namespace Tetris
 				}
 			}
 
+			
 
-
-			if (Keyboard.GetState().IsKeyDown(Keys.Space))
-			{
-				if (gameTime.TotalGameTime.TotalMilliseconds - pecaTempo.tempoDecorridoPodeDescer > pecaTempo.intervaloPodeDescer)
-				{
-					pecaTempo.podeDescer = !pecaTempo.podeDescer;
-					pecaTempo.tempoDecorridoPodeDescer = gameTime.TotalGameTime.TotalMilliseconds;
-				}
-			}
-
-
-
-			GameTime tempo = gameTime;
-
-
-			System.Diagnostics.Debug.Print("TotalMilisegundos: " + tempo.TotalGameTime.TotalMilliseconds.ToString());
 
 			// Desloca a peça pra baixo automaticamente.
 			if (pecaTempo.podeDeslocarVertical == true && pecaTempo.podeDescer)

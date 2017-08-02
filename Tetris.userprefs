@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{1A4ADBBA-CF77-41FC-B6A7-298D1F8E0280}|Default" StartupItem="Tetris/Tetris.csproj">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Tetris/Classes/Tabuleiro.cs">
+    <Files>
+      <File FileName="Tetris/Game1.cs" Line="1" Column="1" />
+      <File FileName="Tetris/Classes/Celula.cs" Line="1" Column="1" />
+      <File FileName="Tetris/Classes/Tabuleiro.cs" Line="178" Column="4" />
+      <File FileName="Tetris/Classes/TetrisCelula.cs" Line="1" Column="1" />
+      <File FileName="Tetris/Program.cs" Line="1" Column="1" />
+      <File FileName="Tetris/Classes/TetrisEstado.cs" Line="1" Column="1" />
+      <File FileName="Tetris/Classes/TetrisPeca.cs" Line="1" Column="1" />
+      <File FileName="Tetris/Classes/JogoFaseEstado.cs" Line="1" Column="1" />
+      <File FileName="Tetris/Classes/TetrisPecaTempo.cs" Line="1" Column="1" />
+      <File FileName="Tetris/Classes/TetrisCelulaCor.cs" Line="1" Column="1" />
+      <File FileName="Tetris/Properties/AssemblyInfo.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint enabled="false" file="/home/fabiuz/meus_documentos/monodevelop/Tetris/Tetris/Classes/TetrisPeca.cs" line="729" column="1" />
+      <Breakpoint enabled="false" file="/home/fabiuz/meus_documentos/monodevelop/Tetris/Tetris/Classes/TetrisPeca.cs" line="618" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="Tetris/Classes/TetrisPeca.cs" line="529" offsetX="522" offsetY="8448" expression="pecaUltimaLinha" liveUpdate="False" />
+    <Watch file="Tetris/Classes/TetrisPeca.cs" line="530" offsetX="530" offsetY="8464" expression="pecaUltimaColuna" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Tetris PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

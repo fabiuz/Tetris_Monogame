@@ -23,17 +23,24 @@ namespace Tetris
 		/// </summary>
 		public double tempoDecorridoVerticalManual;
 
-
 		/// <summary>
 		/// Indica a última vez, tempo que a peça foi girada.
 		/// </summary>
 		public double tempoDecorridoGirar;
+
+		public double tempoDecorridoEsquerda;
+
+		public double tempoDecorridoDireita;
 
 		/// <summary>
 		/// A peça pode se locomover após decorrido o intervalo de tempo
 		/// desde a última vez que a peça se deslocou.
 		/// </summary>
 		public double intervaloDeslocarHorizontal;
+
+		public double intervaloDeslocarPraEsquerda;
+
+		public double intervaloDeslocarPraDireita;
 
 		/// <summary>
 		/// A peça pode se locomver após decorrido o intervalo de tempo 
@@ -61,7 +68,11 @@ namespace Tetris
 		public bool podeDeslocarVertical;
 		public bool podeGirarPeca;
 		public bool podeDeslocarVerticalManual;
+		public bool podeDeslocarPraEsquerda;
+		public bool podeDeslocarPraDireita;
 
 		public bool podeDescer;
+
+		public bool jogoEstaPausado;
 	}
 }
