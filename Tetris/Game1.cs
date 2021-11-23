@@ -51,7 +51,7 @@ namespace Tetris
 
 
 			Tabuleiro.graphicsDevice = this.graphics.GraphicsDevice;
-			Tabuleiro.spriteFont = this.Content.Load<SpriteFont>("arial");
+			//Tabuleiro.spriteFont = this.Content.Load<SpriteFont>("arial");
 			tabuleiro = new Tabuleiro();
 
 			//TODO: use this.Content to load your game content here 
